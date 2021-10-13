@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 // import HomeNoContent from '../../components/HomeNoContent';
 import ProfileCard from '../../components/ProfileCard';
 import RepositoryCard from '../../components/RepositoryCard';
+import RepositoryCardsGrid from '../../components/RepositoryCardsGrid';
 
 import * as S from './styles';
 
@@ -12,7 +13,7 @@ function Home() {
     <S.Container>
       <Header />
       <div style={{ padding: '24px' }}>
-        <RepositoryCard />
+        <RepositoryCardsGrid />
       </div>
     </S.Container>
   );
