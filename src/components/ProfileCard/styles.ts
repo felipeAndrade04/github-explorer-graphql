@@ -12,9 +12,6 @@ export const Container = styled.div`
   border: 1px solid var(--border);
   border-radius: 10px;
 
-  margin: 70px auto;
-  max-width: 1180px;
-
   > div {
     display: flex;
     align-items: center;
@@ -35,6 +32,8 @@ export const Container = styled.div`
 
   @media screen and (max-width: 576px) {
     flex-direction: column;
+    padding: 12px;
+    padding-bottom: 16px;
 
     > div {
       width: 100%;

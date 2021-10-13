@@ -11,7 +11,7 @@ export const Container = styled.div`
   justify-content: space-between;
   gap: 16px;
 
-  background: var(--background);
+  background: var(--shape);
   border: 1px solid var(--border);
   border-radius: 10px;
 `;

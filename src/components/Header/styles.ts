@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  padding: 16px;
+  padding: 16px 0;
 
   background: var(--background);
   border-bottom: 1px solid var(--border);
 
   > div {
-    max-width: 1180px;
+    max-width: 1228px;
     margin: 0 auto;
+    padding: 0 24px;
 
     display: flex;
     align-items: center;
