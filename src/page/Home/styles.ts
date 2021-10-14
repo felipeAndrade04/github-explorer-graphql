@@ -7,6 +7,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   max-width: 1228px;
+  height: 100%;
   margin: 2rem auto;
   padding: 0 24px;
 

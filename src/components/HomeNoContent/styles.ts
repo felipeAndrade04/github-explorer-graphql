@@ -4,17 +4,15 @@ import GithubImg from '../../assets/github.svg';
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1180px;
   height: 100%;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 70px 0;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
 
   > div {
-    height: 60%;
+    height: 100%;
     width: 100%;
 
     background: url(${GithubImg}) no-repeat;
