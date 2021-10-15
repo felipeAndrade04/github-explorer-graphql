@@ -13,8 +13,10 @@ export const Container = styled.div`
   border-radius: 10px;
 
   > div {
-    display: flex;
-    align-items: center;
+    :first-child {
+      display: flex;
+      align-items: center;
+    }
   }
 
   img {
@@ -32,8 +34,8 @@ export const Container = styled.div`
 
   @media screen and (max-width: 576px) {
     flex-direction: column;
+    gap: 10px;
     padding: 12px;
-    padding-bottom: 16px;
 
     > div {
       width: 100%;
@@ -48,36 +50,44 @@ export const InfoWrapper = styled.div`
   border-right: 1px solid var(--border);
   margin-left: 20px;
 
-  strong {
-    font-size: 2rem;
-    line-height: 2rem;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  p {
-    font-size: 1.25rem;
-    font-weight: 500;
-  }
-
-  span {
-    font-size: 0.875rem;
-    font-weight: 400;
-    display: block;
-    margin-top: 4%;
-  }
-
-  @media screen and (max-width: 576px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 10px;
-
+  > div {
     strong {
-      font-size: 1.5rem;
-      line-height: 1.5rem;
+      font-size: 2rem;
+      line-height: 2rem;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+  }
+
+  > p {
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+
+  @media screen and (max-width: 576px) {
+    margin-left: 10px;
+    padding: 0.25rem 0;
+
+    > div {
+      strong {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+      }
+    }
+
+    > p {
+      font-size: 0.75rem;
     }
 
     width: 100%;
@@ -90,7 +100,9 @@ export const InfoNumbersWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 4px;
+
   > div {
     display: flex;
     align-items: center;
@@ -108,7 +120,16 @@ export const InfoNumbersWrapper = styled.div`
 
   @media screen and (max-width: 576px) {
     width: 100%;
-    padding-top: 20px;
+    padding-top: 10px;
     border-top: 1px solid var(--border);
+
+    > div {
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    svg {
+      height: 16px;
+    }
   }
 `;
