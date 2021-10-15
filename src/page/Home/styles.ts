@@ -31,8 +31,9 @@ export const Title = styled.div`
   }
 
   div {
-    width: 20px;
+    min-width: 20px;
     height: 20px;
+    padding: 4px;
     border-radius: 50%;
 
     background: var(--border);
@@ -42,7 +43,7 @@ export const Title = styled.div`
     justify-content: center;
 
     span {
-      font-size: 0.875rem;
+      font-size: 0.75rem;
     }
   }
 `;

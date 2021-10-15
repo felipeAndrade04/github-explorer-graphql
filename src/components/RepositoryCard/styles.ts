@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface FooterProps {
+  color: string;
+}
+
 export const Container = styled.div`
   width: 100%;
   max-width: 380px;
@@ -35,7 +39,7 @@ export const Header = styled.div`
   }
 `;
 
-export const Footer = styled.div`
+export const Footer = styled.div<FooterProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,6 +53,19 @@ export const Footer = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    :first-child {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+
+      div {
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background: ${({ color }) => color};
+      }
+    }
 
     > div {
       display: flex;

@@ -4,31 +4,44 @@ import { BiGitRepoForked } from 'react-icons/bi';
 
 import * as S from './styles';
 
-function RepositoryCard() {
+interface Repository {
+  name: string;
+  description: string;
+  url: string;
+  stargazerCount: number;
+  forkCount: number;
+  primaryLanguage: {
+    name: string;
+    color: string;
+  };
+}
+
+interface RepositoryCardProps {
+  repositoryData: Repository;
+}
+
+function RepositoryCard({ repositoryData }: RepositoryCardProps) {
   return (
     <S.Container>
       <S.Header>
-        <a
-          href="https://github.com/felipeAndrade04/Ignite"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Ignite
+        <a href={repositoryData.url} target="_blank" rel="noreferrer">
+          {repositoryData.name}
         </a>
-        <span>
-          Aplicações desenvolvidas nas aulas e dasafios do Ignite da Rocketseat
-        </span>
+        <span>{repositoryData.description}</span>
       </S.Header>
-      <S.Footer>
-        <span>TypeScript</span>
+      <S.Footer color={repositoryData.primaryLanguage?.color}>
+        <div>
+          <div />
+          <span>{repositoryData.primaryLanguage?.name}</span>
+        </div>
         <div>
           <div>
             <FiStar size={14} />
-            <span>0000</span>
+            <span>{repositoryData.stargazerCount}</span>
           </div>
           <div>
             <BiGitRepoForked size={14} />
-            <span>0000</span>
+            <span>{repositoryData.forkCount}</span>
           </div>
         </div>
       </S.Footer>

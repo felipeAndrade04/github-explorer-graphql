@@ -19,3 +19,23 @@ export const GET_PROFILE = gql`
     }
   }
 `;
+
+export const GET_REPOSITORIES = gql`
+  query GET_REPOSITORIES($login: String!) {
+    repositoryOwner(login: $login) {
+      repositories(first: 100) {
+        nodes {
+          name
+          description
+          url
+          stargazerCount
+          forkCount
+          primaryLanguage {
+            name
+            color
+          }
+        }
+      }
+    }
+  }
+`;
