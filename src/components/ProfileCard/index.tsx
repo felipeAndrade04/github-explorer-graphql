@@ -3,19 +3,37 @@ import { FiStar, FiUsers } from 'react-icons/fi';
 
 import * as S from './styles';
 
-function ProfileCard() {
+interface User {
+  avatarUrl: string;
+  bio: string;
+  name: string;
+  login: string;
+  followers: {
+    totalCount: number;
+  };
+  following: {
+    totalCount: number;
+  };
+  starredRepositories: {
+    totalCount: number;
+  };
+}
+interface ProfileCardProps {
+  profileData: User;
+}
+
+function ProfileCard({ profileData }: ProfileCardProps) {
   return (
     <S.Container>
       <div>
-        <img
-          src="https://avatars.githubusercontent.com/u/42103489?v=4"
-          alt="Foto do perfil"
-        />
+        <img src={profileData?.avatarUrl} alt="Foto do perfil" />
 
         <S.InfoWrapper>
-          <strong>Felipe Andrade</strong>
-          <p>felipeAndrade04</p>
-          <span>flpandrade2011@gmail.com</span>
+          <div>
+            <strong>{profileData?.name}</strong>
+            <p>{profileData?.login}</p>
+          </div>
+          <p>{profileData?.bio}</p>
         </S.InfoWrapper>
       </div>
 
@@ -23,19 +41,20 @@ function ProfileCard() {
         <div>
           <FiUsers size={20} />
           <p>
-            <strong>8</strong> Seguidores
+            <strong>{profileData?.followers?.totalCount}</strong> Seguidores
           </p>
         </div>
         <div>
           <FiUsers size={20} />
           <p>
-            <strong>17</strong> Seguindo
+            <strong>{profileData?.following?.totalCount}</strong> Seguindo
           </p>
         </div>
         <div>
           <FiStar size={20} />
           <p>
-            <strong>16</strong> Estrelas
+            <strong>{profileData?.starredRepositories?.totalCount}</strong>{' '}
+            Estrelas
           </p>
         </div>
       </S.InfoNumbersWrapper>
