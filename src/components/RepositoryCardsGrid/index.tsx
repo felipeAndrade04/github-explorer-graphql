@@ -20,7 +20,6 @@ interface RepositoryCardsGridProps {
 }
 
 function RepositoryCardsGrid({ repositories }: RepositoryCardsGridProps) {
-  console.log(repositories);
   return (
     <S.Container>
       {repositories.map((repository: Repository, index: number) => (
