@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FiBook } from 'react-icons/fi';
 import { useQuery } from '@apollo/client';
+import { toast } from 'react-toastify';
 
 import { GET_PROFILE, GET_REPOSITORIES } from '../../graphql';
-
 import Header from '../../components/Header';
 import HomeNoContent from '../../components/HomeNoContent';
 import ProfileCard from '../../components/ProfileCard';
@@ -19,17 +19,46 @@ function Home() {
     setUser(login);
   }
 
-  const { data: dataProfile, loading: loadingṔrofile } = useQuery(GET_PROFILE, {
+  const {
+    loading: loadingṔrofile,
+    error,
+    data: dataProfile,
+  } = useQuery(GET_PROFILE, {
     variables: { login: user },
   });
-  const { data: dataRepositories, loading: loadingRepositories } = useQuery(
+  const { loading: loadingRepositories, data: dataRepositories } = useQuery(
     GET_REPOSITORIES,
     {
       variables: { login: user },
     },
   );
 
-  // TODO ADD REACT-TOASTIFY
+  if (error && user !== '') {
+    toast.error('Usuário Inválido!', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      toastId: 'id-toast',
+    });
+
+    return (
+      <S.Container>
+        <Header handleSearchUser={handleSearchUser} />
+        {loadingRepositories || loadingṔrofile ? (
+          <Loading show={loadingRepositories || loadingṔrofile} />
+        ) : (
+          <S.Content>
+            <HomeNoContent />
+          </S.Content>
+        )}
+      </S.Container>
+    );
+  }
 
   if (
     user === '' &&
@@ -39,43 +68,49 @@ function Home() {
     return (
       <S.Container>
         <Header handleSearchUser={handleSearchUser} />
-        <S.Content>
-          <HomeNoContent />
-        </S.Content>
-        <Loading show={loadingRepositories || loadingṔrofile} />
+        {loadingRepositories || loadingṔrofile ? (
+          <Loading show={loadingRepositories || loadingṔrofile} />
+        ) : (
+          <S.Content>
+            <HomeNoContent />
+          </S.Content>
+        )}
       </S.Container>
     );
   }
 
   return (
     <S.Container>
-      <Loading show={loadingRepositories || loadingṔrofile} />
       <Header handleSearchUser={handleSearchUser} />
-      <S.Content>
-        {dataProfile?.user &&
-          dataRepositories?.repositoryOwner?.repositories?.nodes && (
-            <>
-              <ProfileCard profileData={dataProfile?.user} />
-              <S.Title>
-                <FiBook size={18} />
-                <p>Repositórios</p>
-                <div>
-                  <span>
-                    {
-                      dataRepositories?.repositoryOwner?.repositories?.nodes
-                        .length
-                    }
-                  </span>
-                </div>
-              </S.Title>
-              <RepositoryCardsGrid
-                repositories={
-                  dataRepositories?.repositoryOwner?.repositories?.nodes
-                }
-              />
-            </>
-          )}
-      </S.Content>
+      {loadingRepositories || loadingṔrofile ? (
+        <Loading show={loadingRepositories || loadingṔrofile} />
+      ) : (
+        <S.Content>
+          {dataProfile?.user &&
+            dataRepositories?.repositoryOwner?.repositories?.nodes && (
+              <>
+                <ProfileCard profileData={dataProfile?.user} />
+                <S.Title>
+                  <FiBook size={18} />
+                  <p>Repositórios</p>
+                  <div>
+                    <span>
+                      {
+                        dataRepositories?.repositoryOwner?.repositories?.nodes
+                          .length
+                      }
+                    </span>
+                  </div>
+                </S.Title>
+                <RepositoryCardsGrid
+                  repositories={
+                    dataRepositories?.repositoryOwner?.repositories?.nodes
+                  }
+                />
+              </>
+            )}
+        </S.Content>
+      )}
     </S.Container>
   );
 }
