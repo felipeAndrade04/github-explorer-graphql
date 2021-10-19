@@ -14,6 +14,17 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  animation: enter 800ms ease-in-out;
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const Title = styled.div`
