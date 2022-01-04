@@ -8,11 +8,16 @@ interface HeaderProps {
 }
 
 function Header({ handleSearchUser }: HeaderProps) {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    handleSearchUser(event.currentTarget.search.value);
-    event.currentTarget.search.value = '';
+    const payload = event.currentTarget
+      .elements as typeof event.currentTarget.elements & {
+      search: { value: string };
+    };
+
+    handleSearchUser(payload.search.value);
+    payload.search.value = '';
   }
 
   return (

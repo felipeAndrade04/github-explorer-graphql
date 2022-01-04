@@ -31,7 +31,7 @@ function RepositoryCard({ repositoryData }: RepositoryCardProps) {
       </S.Header>
       <S.Footer color={repositoryData.primaryLanguage?.color}>
         <div>
-          <div />
+          <div data-testid="repositoryLanguageColor" />
           <span>{repositoryData.primaryLanguage?.name}</span>
         </div>
         <div>

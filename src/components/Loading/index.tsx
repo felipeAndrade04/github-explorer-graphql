@@ -8,7 +8,7 @@ interface LoadingProps {
 
 function Loading({ show }: LoadingProps) {
   return (
-    <S.Overlay show={show}>
+    <S.Overlay show={show} data-testid="overlay">
       <S.Loading>
         <div />
         <div />

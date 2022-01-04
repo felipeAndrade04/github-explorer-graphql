@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_PROFILE = gql`
-  query GET_PROFILE($login: String!) {
+  query getProfile($login: String!) {
     user(login: $login) {
       name
       bio
@@ -21,7 +21,7 @@ export const GET_PROFILE = gql`
 `;
 
 export const GET_REPOSITORIES = gql`
-  query GET_REPOSITORIES($login: String!) {
+  query getRepositories($login: String!) {
     repositoryOwner(login: $login) {
       repositories(first: 100) {
         nodes {
