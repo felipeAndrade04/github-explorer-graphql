@@ -3,21 +3,8 @@ import { FiStar, FiUsers } from 'react-icons/fi';
 
 import * as S from './styles';
 
-interface User {
-  avatarUrl: string;
-  bio: string;
-  name: string;
-  login: string;
-  followers: {
-    totalCount: number;
-  };
-  following: {
-    totalCount: number;
-  };
-  starredRepositories: {
-    totalCount: number;
-  };
-}
+import { User } from '../../common/types';
+
 interface ProfileCardProps {
   profileData: User;
 }

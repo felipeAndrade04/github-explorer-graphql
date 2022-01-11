@@ -3,17 +3,7 @@ import RepositoryCard from '../RepositoryCard';
 
 import * as S from './styles';
 
-interface Repository {
-  name: string;
-  description: string;
-  url: string;
-  stargazerCount: number;
-  forkCount: number;
-  primaryLanguage: {
-    name: string;
-    color: string;
-  };
-}
+import { Repository } from '../../common/types';
 
 interface RepositoryCardsGridProps {
   repositories: Repository[];

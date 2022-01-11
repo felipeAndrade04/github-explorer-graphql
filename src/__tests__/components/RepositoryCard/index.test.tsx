@@ -6,17 +6,7 @@ import {
   repositoryDataBuilder,
 } from '../../../__mocks__/repositoryDataBuilder';
 
-interface Repository {
-  name: string;
-  description: string;
-  url: string;
-  stargazerCount: number;
-  forkCount: number;
-  primaryLanguage: {
-    name: string;
-    color: string;
-  };
-}
+import { Repository } from '../../../common/types';
 
 function setup(props?: Repository) {
   const defaultRepository = repositoryDataBuilder();

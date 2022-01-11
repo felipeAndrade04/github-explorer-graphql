@@ -1,16 +1,6 @@
-interface Repository {
-  name?: string;
-  description?: string;
-  url?: string;
-  stargazerCount?: number;
-  forkCount?: number;
-  primaryLanguage?: {
-    name: string;
-    color: string;
-  };
-}
+import { Repository } from '../common/types';
 
-export function repositoryDataBuilder(props?: Repository) {
+export function repositoryDataBuilder(props?: Partial<Repository>) {
   return {
     name: 'repository1',
     description: 'repoDescription1',
