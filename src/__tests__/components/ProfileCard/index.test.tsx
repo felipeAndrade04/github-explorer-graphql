@@ -6,7 +6,7 @@ import ProfileCard from '../../../components/ProfileCard';
 
 describe('ProfileCard', () => {
   it('should render correctly', () => {
-    const profileData = profileDataBuilder();
+    const profileData = profileDataBuilder;
 
     const { container, getByAltText, getByText } = render(
       <ProfileCard profileData={profileData} />,

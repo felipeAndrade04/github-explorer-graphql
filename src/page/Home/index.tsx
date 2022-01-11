@@ -34,7 +34,8 @@ function Home() {
   );
 
   if (error && user !== '') {
-    toast.error('Usuário Inválido!', {
+    toast('Usuário Inválido!', {
+      type: 'error',
       position: 'top-right',
       autoClose: 3000,
       hideProgressBar: false,
